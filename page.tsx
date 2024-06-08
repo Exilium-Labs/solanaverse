@@ -7,15 +7,12 @@ import WhyVIGLO from "./components/WhyVIGLO";
 import Footer from "./components/Footer";
 import { Suspense } from "react";
 
-/**
- * Dynamically imported components with loading fallbacks and SSR optimizations
- */
 const DynamicLiveDashboard = dynamic(
   () => import("./components/LiveDashboard"),
   {
     loading: () => <p className="text-center text-gray-400">Loading Live Dashboard...</p>,
     ssr: false,
-  }
+  } 
 );
 
 const DynamicJoinRevolution = dynamic(
@@ -52,7 +49,7 @@ export default function Home() {
           <DynamicJoinRevolution />
         </section>
       </Suspense>
-      <Footer />
+      <Footer />  
     </main>
   );
 }
