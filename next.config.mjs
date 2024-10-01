@@ -1,8 +1,8 @@
-let userConfig = undefined
+let userConfig;
 try {
-  userConfig = await import('./v0-user-next.config')
-} catch (e) {
-  // ignore error
+  userConfig = await import("./v0-user-next.config");
+} catch (error) {
+  console.warn("User config not found. Using default Next.js configuration.");
 }
 
 /** @type {import('next').NextConfig} */
@@ -21,28 +21,33 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-}
+};
 
-mergeConfig(nextConfig, userConfig)
+mergeConfig(nextConfig, userConfig);
 
-function mergeConfig(nextConfig, userConfig) {
-  if (!userConfig) {
-    return
-  }
+/**
+ * Merges user-provided config with the default Next.js config.
+ * 
+ * @param {Record<string, any>} baseConfig - Default Next.js config.
+ * @param {Record<string, any>} userConfig - User-defined config.
+ */
+function mergeConfig(baseConfig, userConfig) {
+  if (!userConfig) return;
 
-  for (const key in userConfig) {
+  Object.keys(userConfig).forEach((key) => {
     if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
+      typeof baseConfig[key] === "object" &&
+      !Array.isArray(baseConfig[key]) &&
+      baseConfig[key] !== null
     ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
+      baseConfig[key] = {
+        ...baseConfig[key],
         ...userConfig[key],
-      }
+      };
     } else {
-      nextConfig[key] = userConfig[key]
+      baseConfig[key] = userConfig[key];
     }
-  }
+  });
 }
 
-export default nextConfig
+export default nextConfig;
