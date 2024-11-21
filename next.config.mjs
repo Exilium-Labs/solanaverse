@@ -26,7 +26,7 @@ const nextConfig = {
 mergeConfig(nextConfig, userConfig);
 
 /**
- * Merges user-provided config with the default Next.js config.
+ * 
  * 
  * @param {Record<string, any>} baseConfig - Default Next.js config.
  * @param {Record<string, any>} userConfig - User-defined config.
@@ -48,6 +48,6 @@ function mergeConfig(baseConfig, userConfig) {
       baseConfig[key] = userConfig[key];
     }
   });
-}
+}  
 
 export default nextConfig;
