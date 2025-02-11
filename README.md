@@ -14,7 +14,7 @@ The metaverse is evolving, and **SolanaVerse** ensures that developers have the 
 🔹 **Modular Architecture** – Customizable modules for **virtual land, NFT economies, and social engagement tools**.  
 🔹 **Decentralized & Open-Source** – Empowering communities to create without limitations.  
 
----
+--- 
 
 ## 🛠 **Core Features**
 ### **1️⃣ Virtual World SDK**
